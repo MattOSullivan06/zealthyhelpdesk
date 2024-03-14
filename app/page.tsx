@@ -2,6 +2,7 @@ import db from "../modules/db";
 import { faker } from "@faker-js/faker";
 import { revalidatePath } from "next/cache";
 import React from "react";
+import TicketCard from "./(components)/TicketCard";
 
 export default async function Home() {
   const posts = await db.post.findMany({ orderBy: { createdAt: "desc" } });
@@ -32,6 +33,12 @@ export default async function Home() {
           {post.content}
         </div>
       ))}
+      <div>
+        <TicketCard status="New" />
+        <TicketCard status="New" />
+        <TicketCard status="New" />
+        <TicketCard status="New" />
+      </div>
     </main>
   );
 }
