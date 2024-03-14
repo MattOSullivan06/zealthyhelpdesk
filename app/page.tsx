@@ -1,6 +1,7 @@
 import db from "../modules/db";
 import { faker } from "@faker-js/faker";
 import { revalidatePath } from "next/cache";
+import React from "react";
 
 export default async function Home() {
   const posts = await db.post.findMany({ orderBy: { createdAt: "desc" } });
