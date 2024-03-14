@@ -1,11 +1,11 @@
-import { faX } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const DeleteTicket = () => {
+const DeleteTicket: React.FC = () => {
   return (
     <FontAwesomeIcon
-      icon={faX}
+      icon={faTimes}
       className="text-red-400 hover:cursor-pointer hover:text-red-200"
     />
   );
