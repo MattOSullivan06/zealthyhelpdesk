@@ -22,3 +22,29 @@ model Post {
   @@index([createdAt])
   @@map("posts")
 }
+
+// prisma/schema.prisma
+
+// Other configurations...
+
+model User {
+  id        String    @id @default(cuid())
+  username  String    @unique
+  email     String    @unique
+  password  String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  @@map("users")
+}
+
+model Ticket {
+  id          String    @id @default(cuid())
+  title       String
+  description String
+  status      String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@map("tickets")
+}
