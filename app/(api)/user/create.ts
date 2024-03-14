@@ -6,7 +6,7 @@ import db from '../../../modules/db';
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
     try {
-      const { username, email, password } = req.body;
+      const { id, username, email, password } = req.body;
       const newUser = await db.user.create({
         data: {
           username,

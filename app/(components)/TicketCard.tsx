@@ -8,16 +8,13 @@ interface TicketCardProps {
 
 const TicketCard: React.FC<TicketCardProps> = ({ status }) => {
   return (
-    <div className="flex flex-col bg-card hover:bg-card-hover rounded-md shadow-lg p-3 m-2">
-      <div className="flex mb-3">
-        <div className="ml-auto">
-          <TicketDeletion />
-        </div>
+    <div className="flex flex-col bg-card hover:bg-card-hover rounded-md shadow-lg p-3 m-2 border border-sky-500">
+      <div className="ml-auto">
+        <TicketDeletion />
       </div>
       <h4>Ticket Title</h4>
       <hr className="h-px border-0 bg-page mb-2" />
       <p className="whitespace-pre-wrap">ticket description</p>
-
       <div className="ml-auto flex items-end">
         <TicketStatusIndicator status={status} />
       </div>

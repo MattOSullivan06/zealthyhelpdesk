@@ -21,24 +21,11 @@ export default async function Home() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-start p-24">
-      <form action={generatePosts}>
-        <button className="bg-black text-white p-5 mb-5 rounded-lg">
-          Generate Posts
-        </button>
-      </form>
-
-      {posts.map((post) => (
-        <div key={post.id} className="bg-white mb-3 px-5 py-3 rounded-md">
-          {post.content}
-        </div>
-      ))}
-      <div className="lg:grid grid-cols-2 xl:grid-cols-4">
-        <TicketCard status="New" />
-        <TicketCard status="New" />
-        <TicketCard status="New" />
-        <TicketCard status="New" />
-      </div>
-    </main>
+    <div className="lg:grid grid-cols-2 xl:grid-cols-4">
+      <TicketCard status="New" />
+      <TicketCard status="New" />
+      <TicketCard status="New" />
+      <TicketCard status="New" />
+    </div>
   );
 }
