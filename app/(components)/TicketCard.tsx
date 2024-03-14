@@ -17,14 +17,9 @@ const TicketCard: React.FC<TicketCardProps> = ({ status }) => {
       <h4>Ticket Title</h4>
       <hr className="h-px border-0 bg-page mb-2" />
       <p className="whitespace-pre-wrap">ticket description</p>
-      <div className="flex-grow"></div>
-      <div className="flex mt-2">
-        <div className="flex flex-col">
-          <p className="text-xs my-1">date/time</p>
-        </div>
-        <div className="ml-auto flex items-end">
-          <TicketStatusIndicator status={status} />
-        </div>
+
+      <div className="ml-auto flex items-end">
+        <TicketStatusIndicator status={status} />
       </div>
     </div>
   );

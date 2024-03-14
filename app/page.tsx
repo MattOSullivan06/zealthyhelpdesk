@@ -33,7 +33,7 @@ export default async function Home() {
           {post.content}
         </div>
       ))}
-      <div>
+      <div className="lg:grid grid-cols-2 xl:grid-cols-4">
         <TicketCard status="New" />
         <TicketCard status="New" />
         <TicketCard status="New" />
