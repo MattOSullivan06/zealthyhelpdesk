@@ -14,7 +14,7 @@ const TicketCard: React.FC<TicketCardProps> = (props: TicketCardProps) => {
       <div>{props.ticket.title}</div>
       <div>{props.ticket.status}</div>
       <Link href={`/Ticket/${props.ticket.id}`}>
-        <button className="bg-sky-500 text-white rounded-lg px-4 py-2 hover:bg-sky-600 transition-colors duration-300 ease-in-out">
+        <button className="bg-indigo-600 text-white rounded-lg px-4 py-2 hover:bg-indigo-700 transition-colors duration-300 ease-in-out">
           View Ticket
         </button>
       </Link>
