@@ -47,7 +47,7 @@ export default function TicketResponse({ params }: { params: { id: string } }) {
       router.push("/AdminPanel");
       router.refresh();
     }
-
+    setIsLoading(false);
     console.log(`Would normally send email here with body: ${response}`);
   };
 
@@ -95,17 +95,19 @@ export default function TicketResponse({ params }: { params: { id: string } }) {
             <select
               value={status}
               onChange={(e) => setStatus(e.target.value)}
-              className="border border-black rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50 px-4 py-2 mb-4, bg-white"
-            >
+              className="border border-black rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50 px-4 py-2 mb-4, bg-white"            >
               <option value="New">New</option>
               <option value="In Progress">In Progress</option>
               <option value="Resolved">Resolved</option>
             </select>
             <button
               type="submit"
-              className="px-8 py-4 text-white bg-indigo-600 rounded-md shadow-md hover:bg-indigo-700 focus:outline-none focus:bg-indigo-700 w-full mt-8"
+              className={`px-8 py-4 text-white bg-indigo-600 rounded-md shadow-md hover:bg-indigo-700 focus:outline-none focus:bg-indigo-700 w-full mt-8 ${
+                isLoading ? "opacity-50 cursor-not-allowed" : ""
+              }`}
+              disabled={isLoading}
             >
-              Submit Response
+              {isLoading ? "Submitting..." : "Submit Response"}
             </button>
           </div>
         </div>
