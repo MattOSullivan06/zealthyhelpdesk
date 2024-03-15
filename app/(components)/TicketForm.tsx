@@ -42,15 +42,15 @@ const TicketForm: React.FC = () => {
       <form
         onSubmit={handleSubmit}
         className="w-2/3 max-w-xl bg-gray-200 p-6 rounded-lg shadow-md"
-        style={{ height: "66vh" }}
+        style={{ marginTop: "10vh", marginBottom: "10vh" }}
       >
         <h1 className="text-3xl font-bold mb-6 text-center">
           HELP DESK SUBMISSION FORM
         </h1>
-        <div className="bg-gray-200 p-4 rounded-lg mb-6">
+        <div className="bg-gray-200 p-4 rounded-lg mb-4">
           <div className="flex space-x-4 mb-4">
             <div className="w-1/2 relative">
-              <label className="block">
+              <label className="block text-lg">
                 <span className="text-gray-700">First Name</span>
                 <span className="text-red-500">*</span>
                 <input
@@ -63,7 +63,7 @@ const TicketForm: React.FC = () => {
               </label>
             </div>
             <div className="w-1/2 relative">
-              <label className="block">
+              <label className="block text-lg">
                 <span className="text-gray-700">Last Name</span>
                 <span className="text-red-500">*</span>
                 <input
@@ -76,7 +76,7 @@ const TicketForm: React.FC = () => {
               </label>
             </div>
           </div>
-          <label className="block mb-4">
+          <label className="block mb-4 text-lg">
             <span className="text-gray-700">Email</span>
             <span className="text-red-500">*</span>
             <input
@@ -87,7 +87,7 @@ const TicketForm: React.FC = () => {
               className="mt-1 block w-full border border-black rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
             />
           </label>
-          <label className="block mb-4">
+          <label className="block mb-4 text-lg">
             <span className="text-gray-700">Title</span>
             <span className="text-red-500">*</span>
             <input
@@ -98,7 +98,7 @@ const TicketForm: React.FC = () => {
               className="mt-1 block w-full border border-black rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
             />
           </label>
-          <label className="block mb-8">
+          <label className="block mb-4 text-lg">
             <span className="text-gray-700">Description</span>
             <span className="text-red-500">*</span>
             <textarea
@@ -106,17 +106,17 @@ const TicketForm: React.FC = () => {
               onChange={(e) => setDescription(e.target.value)}
               value={description}
               className="mt-1 block w-full border border-black rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
-              style={{ height: "120px" }}
+              style={{ height: "200px" }}
             />
           </label>
+          <button
+            type="submit"
+            className="w-full px-4 py-4 text-white bg-indigo-600 rounded-md shadow-md hover:bg-indigo-700 focus:outline-none focus:bg-indigo-700 mt-8" // Adjusted margin
+            disabled={isLoading}
+          >
+            {isLoading ? "Submitting..." : "Submit Ticket"}
+          </button>
         </div>
-        <button
-          type="submit"
-          className="w-full px-4 py-2 text-white bg-indigo-600 rounded-md shadow-md hover:bg-indigo-700 focus:outline-none focus:bg-indigo-700"
-          disabled={isLoading}
-        >
-          {isLoading ? "Submitting..." : "Submit Ticket"}
-        </button>
       </form>
     </div>
   );
