@@ -6,7 +6,7 @@ const getTickets = async () => {
   try {
     const res = await fetch(
       `${
-        process.env.SERVER_ROUTE ?? process.env.VERCEL_URL
+        process.env.SERVER_ROUTE ?? 'https://zealthyhelpdesk-delta.vercel.app'
       }/api/tickets`
     );
 
