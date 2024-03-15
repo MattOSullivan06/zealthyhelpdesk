@@ -2,10 +2,18 @@ import React from "react";
 import TicketCard from "./TicketCard";
 import { Ticket } from "../Ticket/[id]/types";
 
-const AdminPanel: React.FC = () => {
-  // Placeholder tickets data
-  const TicketList: Ticket[] = [];
+const getTickets = async () => {
+  try {
+    const res = await fetch(`http://localhost:3000/api/tickets`);
 
+    return res.json();
+  } catch (error) {
+    console.log("Error loading topics: ", error);
+  }
+};
+
+const AdminPanel: React.FC = async () => {
+  const TicketList: Ticket[] = (await getTickets()).tickets;
   return (
     <div className="w-full flex flex-col items-center justify-center">
       <h1 className="text-2xl font-bold mt-6 mb-4">Admin Panel</h1>

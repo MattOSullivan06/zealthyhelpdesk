@@ -1,5 +1,3 @@
-import db from "../modules/db";
-import { revalidatePath } from "next/cache";
 import React from "react";
 import TicketForm from "./(components)/TicketForm";
 
