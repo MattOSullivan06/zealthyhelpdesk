@@ -1,31 +1,10 @@
 import React from "react";
 import TicketCard from "./TicketCard";
+import { Ticket } from "../Ticket/[id]/types";
 
 const AdminPanel: React.FC = () => {
   // Placeholder tickets data
-  const placeholderTickets = [
-    {
-      id: "1",
-      firstName: "John",
-      lastName: "Doe",
-      title: "Fix login issue",
-      status: "New",
-    },
-    {
-      id: "2",
-      firstName: "Jane",
-      lastName: "Smith",
-      title: "Update homepage",
-      status: "In Progress",
-    },
-    {
-      id: "3",
-      firstName: "Alice",
-      lastName: "Johnson",
-      title: "Design new feature",
-      status: "Done",
-    },
-  ];
+  const TicketList: Ticket[] = [];
 
   return (
     <div className="w-full flex flex-col items-center justify-center">
@@ -37,7 +16,7 @@ const AdminPanel: React.FC = () => {
           <div>Title</div>
           <div>Status</div>
         </div>
-        {placeholderTickets.map((ticket) => (
+        {TicketList.map((ticket) => (
           <TicketCard key={ticket.id} ticket={ticket} />
         ))}
       </div>

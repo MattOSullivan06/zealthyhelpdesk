@@ -1,21 +1,18 @@
 import React from "react";
 import Link from "next/link";
+import { Ticket } from "../Ticket/[id]/types";
 
-const TicketCard: React.FC = () => {
-  const placeholderTicket = {
-    firstName: "John",
-    lastName: "Doe",
-    email: "john.doe@example.com",
-    title: "Fix login issue",
-    status: "New",
-  };
+interface TicketCardProps {
+  ticket: Ticket;
+}
 
+const TicketCard: React.FC<TicketCardProps> = (props: TicketCardProps) => {
   return (
     <div className=" border-black border-2 px-4 grid grid-cols-5 gap-4 text-center py-2">
-      <div>{`${placeholderTicket.firstName} ${placeholderTicket.lastName}`}</div>
-      <div>{placeholderTicket.email}</div>
-      <div>{placeholderTicket.title}</div>
-      <div>{placeholderTicket.status}</div>
+      <div>{`${props.ticket.firstName} ${props.ticket.lastName}`}</div>
+      <div>{props.ticket.email}</div>
+      <div>{props.ticket.title}</div>
+      <div>{props.ticket.status}</div>
       <Link href="/Ticket">
         <button className="bg-sky-500 text-white rounded-lg px-4 py-2 hover:bg-sky-600 transition-colors duration-300 ease-in-out">
           View Ticket
