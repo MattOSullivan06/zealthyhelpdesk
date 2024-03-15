@@ -1,3 +1,4 @@
+"use client"
 import { NextPageContext } from "next";
 import React from "react";
 import TicketForm from "../../(components)/TicketForm";

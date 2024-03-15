@@ -7,12 +7,12 @@ const getTickets = async () => {
   const tickets = await db.ticket.findMany();
   return tickets.map((ticket) => {
     return {
-      firstName: "",
-      lastName: "",
+      firstName: ticket.firstName,
+      lastName: ticket.lastName,
       title: ticket.title,
       description: ticket.description,
       email: ticket.email,
-      status: "",
+      status: ticket.status,
       id: ticket.id,
     };
   });
