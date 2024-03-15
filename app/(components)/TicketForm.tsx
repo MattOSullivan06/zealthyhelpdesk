@@ -31,9 +31,9 @@ export default function CreateForm() {
       body: JSON.stringify(newTicket),
     });
     console.log(await res.json());
-    if (res.status === 201) {
+    if (res.status === 200) {
       router.refresh();
-      router.push("/tickets");
+      router.push("/AdminPanel");
     }
   };
 

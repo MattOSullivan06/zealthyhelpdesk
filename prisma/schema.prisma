@@ -16,16 +16,6 @@ datasource db {
 
 // Other configurations...
 
-model User {
-  id        String    @id @default(cuid())
-  username  String    @unique
-  email     String    @unique
-  password  String
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-
-  @@map("users")
-}
 
 model Ticket {
   id          String    @id @default(cuid())
@@ -35,6 +25,7 @@ model Ticket {
   email       String
   title       String
   description String
+  response    String?
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
 
