@@ -6,7 +6,7 @@ const getTickets = async () => {
   try {
     const res = await fetch(
       `${
-        process.env.SERVER_ROUTE ?? process.env.NEXT_PUBLIC_VERCEL_URL
+        process.env.SERVER_ROUTE ?? process.env.VERCEL_URL
       }/api/tickets`
     );
 
