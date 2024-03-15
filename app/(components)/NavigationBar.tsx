@@ -10,12 +10,11 @@ const NavigationBar: React.FC = () => {
         <Link href="/">
           <FontAwesomeIcon icon={faHome} />
         </Link>
-        <Link href="/Ticket/new">
-          <FontAwesomeIcon icon={faTicket} />
-        </Link>
       </div>
       <div className="text-white">
-        <p className="text-default-text">Username/email?</p>
+        <Link href="/AdminPanel">
+          <p className="text-default-text">Admin Panel</p>
+        </Link>
       </div>
     </nav>
   );

@@ -1,31 +1,16 @@
 import db from "../modules/db";
-import { faker } from "@faker-js/faker";
 import { revalidatePath } from "next/cache";
 import React from "react";
-import TicketCard from "./(components)/TicketCard";
+import TicketForm from "./(components)/TicketForm";
 
-export default async function Home() {
-  const posts = await db.post.findMany({ orderBy: { createdAt: "desc" } });
-
-  const generatePosts = async () => {
-    "use server";
-
-    await db.post.createMany({
-      data: [
-        { content: faker.lorem.sentence() },
-        { content: faker.lorem.sentence() },
-        { content: faker.lorem.sentence() },
-      ],
-    });
-    revalidatePath("/");
+export default function Home() {
+  const handleSubmitTicket = async (formData) => {
+    console.log("Submitted ticket data:", formData);
   };
 
   return (
-    <div className="lg:grid grid-cols-2 xl:grid-cols-4">
-      <TicketCard status="New" />
-      <TicketCard status="New" />
-      <TicketCard status="New" />
-      <TicketCard status="New" />
+    <div className="container mx-auto px-4 py-8">
+      <TicketForm />
     </div>
   );
 }

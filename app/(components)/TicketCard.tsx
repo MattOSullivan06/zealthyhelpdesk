@@ -1,23 +1,26 @@
 import React from "react";
-import TicketDeletion from "./TicketDeletion";
-import TicketStatusIndicator from "./TicketStatusIndicator";
+import Link from "next/link";
 
-interface TicketCardProps {
-  status: "New" | "In Progress" | "Done" | string; // Assuming status is one of these values
-}
+const TicketCard: React.FC = () => {
+  const placeholderTicket = {
+    firstName: "John",
+    lastName: "Doe",
+    email: "john.doe@example.com",
+    title: "Fix login issue",
+    status: "New",
+  };
 
-const TicketCard: React.FC<TicketCardProps> = ({ status }) => {
   return (
-    <div className="flex flex-col bg-card hover:bg-card-hover rounded-md shadow-lg p-3 m-2 border border-sky-500">
-      <div className="ml-auto">
-        <TicketDeletion />
-      </div>
-      <h4>Ticket Title</h4>
-      <hr className="h-px border-0 bg-page mb-2" />
-      <p className="whitespace-pre-wrap">ticket description</p>
-      <div className="ml-auto flex items-end">
-        <TicketStatusIndicator status={status} />
-      </div>
+    <div className=" border-black border-2 px-4 grid grid-cols-5 gap-4 text-center py-2">
+      <div>{`${placeholderTicket.firstName} ${placeholderTicket.lastName}`}</div>
+      <div>{placeholderTicket.email}</div>
+      <div>{placeholderTicket.title}</div>
+      <div>{placeholderTicket.status}</div>
+      <Link href="/Ticket">
+        <button className="bg-sky-500 text-white rounded-lg px-4 py-2 hover:bg-sky-600 transition-colors duration-300 ease-in-out">
+          View Ticket
+        </button>
+      </Link>
     </div>
   );
 };
