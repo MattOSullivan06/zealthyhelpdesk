@@ -2,9 +2,9 @@ import React from "react";
 import AdminPanel from "../(components)/AdminPanel";
 
 import db from "@/modules/db";
-// export const dynamic = "force-dynamic";
-// export const revalidate = 0;
-export const fetchCache = "force-no-store";
+// // export const dynamic = "force-dynamic";
+// // export const revalidate = 0;
+// export const fetchCache = "force-no-store";
 
 async function getTickets() {
   const tickets = await db.ticket.findMany();
