@@ -5,7 +5,9 @@ import { Ticket } from "../Ticket/[id]/types";
 const getTickets = async () => {
   try {
     const res = await fetch(
-      `${process.env.SERVER_ROUTE ?? process.env.NEXT_PUBLIC_URL}/api/tickets`
+      `${
+        process.env.SERVER_ROUTE ?? process.env.NEXT_PUBLIC_VERCEL_URL
+      }/api/tickets`
     );
 
     return res.json();
