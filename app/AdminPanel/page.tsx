@@ -3,7 +3,7 @@ import AdminPanel from "../(components)/AdminPanel";
 
 import db from "@/modules/db";
 
-export async function getTickets() {
+async function getTickets() {
   const tickets = await db.ticket.findMany();
   return tickets.map((ticket) => {
     return {
