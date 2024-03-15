@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "vercel-build": "prisma generate && npx prisma migrate reset && next build"
+    "vercel-build": "prisma generate && npx prisma migrate reset --force && next build"
   },
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
