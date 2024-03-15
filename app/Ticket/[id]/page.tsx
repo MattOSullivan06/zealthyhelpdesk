@@ -55,8 +55,7 @@ export default function TicketResponse({ params }: { params: { id: string } }) {
     <div className="flex justify-center items-center min-h-screen bg-white-500">
       <form
         onSubmit={handleSubmit}
-        className="w-2/3 max-w-xl bg-gray-200 p-6 rounded-lg shadow-md"
-        style={{ marginTop: "10vh", marginBottom: "10vh" }}
+        className="w-2/3 max-w-xl bg-gray-200 p-6 rounded-lg shadow-md mt-24 mb-24"
       >
         <h1 className="text-3xl font-bold mb-6 text-center">{title}</h1>
         <div className="bg-gray-200 p-4 rounded-lg mb-6">
@@ -77,8 +76,7 @@ export default function TicketResponse({ params }: { params: { id: string } }) {
             <textarea
               value={description}
               readOnly
-              className="mt-1 block w-full border border-black rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50 resize-none"
-              style={{ minHeight: "150px", maxHeight: "300px" }}
+              className="mt-1 block w-full border border-black rounded-md shadow-sm  resize-none min-h-40 max-h-80"
             />
           </div>
           <label className="block mb-4">
@@ -86,8 +84,7 @@ export default function TicketResponse({ params }: { params: { id: string } }) {
             <textarea
               value={response}
               onChange={(e) => setResponse(e.target.value)}
-              className="mt-1 block w-full border border-black rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50 resize-none"
-              style={{ minHeight: "150px", maxHeight: "300px" }}
+              className="mt-1 block w-full border border-black rounded-md shadow-sm resize-none min-h-32 max-h-80"
             />
           </label>
           <div className="flex flex-col items-start mt-8">
@@ -95,7 +92,8 @@ export default function TicketResponse({ params }: { params: { id: string } }) {
             <select
               value={status}
               onChange={(e) => setStatus(e.target.value)}
-              className="border border-black rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50 px-4 py-2 mb-4, bg-white"            >
+              className="border border-black rounded-md shadow-sm px-4 py-2 mb-4, bg-white"
+            >
               <option value="New">New</option>
               <option value="In Progress">In Progress</option>
               <option value="Resolved">Resolved</option>

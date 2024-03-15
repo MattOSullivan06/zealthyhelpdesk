@@ -41,8 +41,7 @@ const TicketForm: React.FC = () => {
     <div className="flex justify-center items-center min-h-screen bg-white-500">
       <form
         onSubmit={handleSubmit}
-        className="w-2/3 max-w-xl bg-gray-200 p-6 rounded-lg shadow-md"
-        style={{ marginTop: "10vh", marginBottom: "10vh" }}
+        className="w-2/3 max-w-xl bg-gray-200 p-6 rounded-lg shadow-md mt-24 mb-24"
       >
         <h1 className="text-3xl font-bold mb-6 text-center">
           HELP DESK SUBMISSION FORM
@@ -58,7 +57,7 @@ const TicketForm: React.FC = () => {
                   type="text"
                   onChange={(e) => setFirstName(e.target.value)}
                   value={firstName}
-                  className="mt-1 block w-full border border-black rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
+                  className="mt-1 block w-full border border-black rounded-md shadow-sm"
                 />
               </label>
             </div>
@@ -71,7 +70,7 @@ const TicketForm: React.FC = () => {
                   type="text"
                   onChange={(e) => setLastName(e.target.value)}
                   value={lastName}
-                  className="mt-1 block w-full border border-black rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
+                  className="mt-1 block w-full border border-black rounded-md shadow-sm"
                 />
               </label>
             </div>
@@ -84,7 +83,7 @@ const TicketForm: React.FC = () => {
               type="email"
               onChange={(e) => setEmail(e.target.value)}
               value={email}
-              className="mt-1 block w-full border border-black rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
+              className="mt-1 block w-full border border-black rounded-md shadow-sm"
             />
           </label>
           <label className="block mb-4 text-lg">
@@ -95,7 +94,7 @@ const TicketForm: React.FC = () => {
               type="text"
               onChange={(e) => setTitle(e.target.value)}
               value={title}
-              className="mt-1 block w-full border border-black rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
+              className="mt-1 block w-full border border-black rounded-md shadow-sm"
             />
           </label>
           <label className="block mb-4 text-lg">
@@ -105,8 +104,7 @@ const TicketForm: React.FC = () => {
               required
               onChange={(e) => setDescription(e.target.value)}
               value={description}
-              className="mt-1 block w-full border border-black rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
-              style={{ height: "200px" }}
+              className="mt-1 block w-full border border-black rounded-md shadow-sm h-48"
             />
           </label>
           <button
