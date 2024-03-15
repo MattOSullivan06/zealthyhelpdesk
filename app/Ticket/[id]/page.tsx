@@ -50,65 +50,64 @@ export default function TicketResponse({ params }: { params: { id: string } }) {
 
     console.log(`Would normally send email here with body: ${response}`);
   };
+
   return (
     <div className="flex justify-center items-center min-h-screen bg-white-500">
       <form
         onSubmit={handleSubmit}
         className="w-2/3 max-w-xl bg-gray-200 p-6 rounded-lg shadow-md"
-        style={{ height: "66vh" }}
+        style={{ marginTop: "10vh", marginBottom: "10vh" }}
       >
         <h1 className="text-3xl font-bold mb-6 text-center">{title}</h1>
         <div className="bg-gray-200 p-4 rounded-lg mb-6">
-          <div className="flex space-x-4 mb-4">
-            <div className="w-1/2">
-              <div>
-                <span className="text-gray-700">First Name: </span>
-                <span>{firstName}</span>
-              </div>
-              <div>
-                <span className="text-gray-700">Last Name: </span>
-                <span>{lastName}</span>
-              </div>
-            </div>
+          <div className="mb-4">
+            <p className="text-lg text-gray-700">First Name: {firstName}</p>
           </div>
           <div className="mb-4">
-            <span className="text-gray-700">Description: </span>
-            <span>{description}</span>
+            <p className="text-lg text-gray-700">Last Name: {lastName}</p>
           </div>
           <div className="mb-4">
-            <span className="text-gray-700">Email: </span>
-            <span>{email}</span>
+            <p className="text-lg text-gray-700">Email: {email}</p>
           </div>
           <div className="mb-4">
-            <span className="text-gray-700">Status: </span>
-            <span>{status}</span>
+            <p className="text-lg text-gray-700">Status: {status}</p>
           </div>
-          <label className="block mb-8">
-            <span className="text-gray-700">Response</span>
-            <input
-              type="text"
+          <div className="mb-4">
+            <p className="text-lg text-gray-700">Description:</p>
+            <textarea
+              value={description}
+              readOnly
+              className="mt-1 block w-full border border-black rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50 resize-none"
+              style={{ minHeight: "150px", maxHeight: "300px" }}
+            />
+          </div>
+          <label className="block mb-4">
+            <span className="text-lg text-gray-700">Response</span>
+            <textarea
               value={response}
               onChange={(e) => setResponse(e.target.value)}
-              className="mt-1 block w-full border border-black rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
+              className="mt-1 block w-full border border-black rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50 resize-none"
+              style={{ minHeight: "150px", maxHeight: "300px" }}
             />
           </label>
-        </div>
-        <div className="flex justify-between">
-          <button
-            type="submit"
-            className="w-full px-4 py-2 text-white bg-indigo-600 rounded-md shadow-md hover:bg-indigo-700 focus:outline-none focus:bg-indigo-700"
-          >
-            Submit Response
-          </button>
-          <select
-            value={status}
-            onChange={(e) => setStatus(e.target.value)}
-            className="mt-1 block w-1/2 border border-black rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
-          >
-            <option value="New">New</option>
-            <option value="In Progress">In Progress</option>
-            <option value="Resolved">Resolved</option>
-          </select>
+          <div className="flex flex-col items-start mt-8">
+            <label className="text-lg text-gray-700 mb-2">Change Status:</label>
+            <select
+              value={status}
+              onChange={(e) => setStatus(e.target.value)}
+              className="border border-black rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50 px-4 py-2 mb-4, bg-white"
+            >
+              <option value="New">New</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Resolved">Resolved</option>
+            </select>
+            <button
+              type="submit"
+              className="px-8 py-4 text-white bg-indigo-600 rounded-md shadow-md hover:bg-indigo-700 focus:outline-none focus:bg-indigo-700 w-full mt-8"
+            >
+              Submit Response
+            </button>
+          </div>
         </div>
       </form>
     </div>
