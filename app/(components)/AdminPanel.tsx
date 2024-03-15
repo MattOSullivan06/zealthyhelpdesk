@@ -4,7 +4,9 @@ import { Ticket } from "../Ticket/[id]/types";
 
 const getTickets = async () => {
   try {
-    const res = await fetch(`http://localhost:3000/api/tickets`);
+    const res = await fetch(
+      `${process.env.SERVER_ROUTE ?? process.env.NEXT_PUBLIC_URL}/api/tickets`
+    );
 
     return res.json();
   } catch (error) {
