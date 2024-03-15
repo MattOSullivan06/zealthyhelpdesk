@@ -1,25 +1,11 @@
 import React from "react";
 import TicketCard from "./TicketCard";
 import { Ticket } from "../Ticket/[id]/types";
-import db from "@/modules/db";
 
-const getTickets = async () => {
-  const tickets = await db.ticket.findMany();
-  return tickets.map((ticket) => {
-    return {
-      firstName: ticket.firstName,
-      lastName: ticket.lastName,
-      title: ticket.title,
-      description: ticket.description,
-      email: ticket.email,
-      status: ticket.status,
-      id: ticket.id,
-    };
-  });
-};
-
-const AdminPanel: React.FC = async () => {
-  const TicketList: Ticket[] = await getTickets();
+const AdminPanel: React.FC<{ tickets: Ticket[] }> = async (props: {
+  tickets: Ticket[];
+}) => {
+  const tickets = props.tickets;
   return (
     <div className="w-full flex flex-col items-center justify-center">
       <h1 className="text-2xl font-bold mt-6 mb-4">Admin Panel</h1>
@@ -30,7 +16,7 @@ const AdminPanel: React.FC = async () => {
           <div>Title</div>
           <div>Status</div>
         </div>
-        {TicketList.map((ticket) => (
+        {tickets.map((ticket) => (
           <TicketCard key={ticket.id} ticket={ticket} />
         ))}
       </div>
