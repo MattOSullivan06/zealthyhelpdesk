@@ -1,19 +1,18 @@
 "use client";
+import React, { useState, FormEvent } from "react";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
-import React from "react";
 
-export default function CreateForm() {
+const TicketForm: React.FC = () => {
   const router = useRouter();
 
   const [title, setTitle] = useState<string>("");
-  const [description, setdescription] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
   const [firstName, setFirstName] = useState<string>("");
   const [lastName, setLastName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
 
@@ -25,12 +24,13 @@ export default function CreateForm() {
       email,
       status: "New",
     };
+
     const res = await fetch(`/api/ticket`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newTicket),
     });
-    console.log(await res.json());
+
     if (res.status === 200) {
       router.push("/AdminPanel");
       router.refresh();
@@ -42,7 +42,7 @@ export default function CreateForm() {
       <form
         onSubmit={handleSubmit}
         className="w-2/3 max-w-xl bg-gray-200 p-6 rounded-lg shadow-md"
-        style={{ height: "66vh" }} // Adjusting height
+        style={{ height: "66vh" }}
       >
         <h1 className="text-3xl font-bold mb-6 text-center">
           HELP DESK SUBMISSION FORM
@@ -103,7 +103,7 @@ export default function CreateForm() {
             <span className="text-red-500">*</span>
             <textarea
               required
-              onChange={(e) => setdescription(e.target.value)}
+              onChange={(e) => setDescription(e.target.value)}
               value={description}
               className="mt-1 block w-full border border-black rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
               style={{ height: "120px" }}
@@ -111,6 +111,7 @@ export default function CreateForm() {
           </label>
         </div>
         <button
+          type="submit"
           className="w-full px-4 py-2 text-white bg-indigo-600 rounded-md shadow-md hover:bg-indigo-700 focus:outline-none focus:bg-indigo-700"
           disabled={isLoading}
         >
@@ -119,4 +120,6 @@ export default function CreateForm() {
       </form>
     </div>
   );
-}
+};
+
+export default TicketForm;

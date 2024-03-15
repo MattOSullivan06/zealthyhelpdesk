@@ -21,7 +21,6 @@ export default function TicketResponse({ params }: { params: { id: string } }) {
           return await res.json();
         })
         .then(async (json) => {
-          console.log(json);
           setStatus(json.ticket.status);
           setTitle(json.ticket.title);
           setDescription(json.ticket.description);
