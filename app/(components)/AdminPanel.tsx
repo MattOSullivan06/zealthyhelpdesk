@@ -1,23 +1,25 @@
 import React from "react";
 import TicketCard from "./TicketCard";
 import { Ticket } from "../Ticket/[id]/types";
+import db from "@/modules/db";
 
 const getTickets = async () => {
-  try {
-    const res = await fetch(
-      `${
-        process.env.SERVER_ROUTE ?? 'https://zealthyhelpdesk-delta.vercel.app'
-      }/api/tickets`
-    );
-
-    return res.json();
-  } catch (error) {
-    console.log("Error loading topics: ", error);
-  }
+  const tickets = await db.ticket.findMany();
+  return tickets.map((ticket) => {
+    return {
+      firstName: "",
+      lastName: "",
+      title: ticket.title,
+      description: ticket.description,
+      email: ticket.email,
+      status: "",
+      id: ticket.id,
+    };
+  });
 };
 
 const AdminPanel: React.FC = async () => {
-  const TicketList: Ticket[] = (await getTickets()).tickets;
+  const TicketList: Ticket[] = await getTickets();
   return (
     <div className="w-full flex flex-col items-center justify-center">
       <h1 className="text-2xl font-bold mt-6 mb-4">Admin Panel</h1>
