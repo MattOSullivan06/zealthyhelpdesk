@@ -45,8 +45,8 @@ export default function TicketResponse({ params }: { params: { id: string } }) {
       body: JSON.stringify({ response, status }),
     });
     if (res.status === 200) {
-      router.refresh();
       router.push("/AdminPanel");
+      router.refresh();
     }
 
     console.log(`Would normally send email here with body: ${response}`);

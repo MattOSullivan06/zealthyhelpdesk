@@ -32,8 +32,8 @@ export default function CreateForm() {
     });
     console.log(await res.json());
     if (res.status === 200) {
-      router.refresh();
       router.push("/AdminPanel");
+      router.refresh();
     }
   };
 
