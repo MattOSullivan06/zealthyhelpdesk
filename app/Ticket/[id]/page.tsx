@@ -51,6 +51,10 @@ export default function TicketResponse({ params }: { params: { id: string } }) {
     console.log(`Would normally send email here with body: ${response}`);
   };
 
+  const handleReturnClick = () => {
+    router.push("/AdminPanel");
+  };
+
   return (
     <div className="flex justify-center items-center min-h-screen bg-white-500">
       <form
@@ -58,16 +62,16 @@ export default function TicketResponse({ params }: { params: { id: string } }) {
         className="w-2/3 max-w-xl bg-gray-200 p-6 rounded-lg shadow-md mt-24 mb-24"
       >
         <div className="bg-gray-200 p-4 rounded-lg mb-6">
-        <div className="mb-4">
+          <div className="mb-4 break-all">
             <p className="text-lg text-gray-700">Title: {title}</p>
           </div>
-          <div className="mb-4">
+          <div className="mb-4 break-all">
             <p className="text-lg text-gray-700">First Name: {firstName}</p>
           </div>
-          <div className="mb-4">
+          <div className="mb-4 break-all">
             <p className="text-lg text-gray-700">Last Name: {lastName}</p>
           </div>
-          <div className="mb-4">
+          <div className="mb-4 break-all">
             <p className="text-lg text-gray-700">Email: {email}</p>
           </div>
           <div className="mb-4">
@@ -78,7 +82,7 @@ export default function TicketResponse({ params }: { params: { id: string } }) {
             <textarea
               value={description}
               readOnly
-              className="mt-1 block w-full border border-black rounded-md shadow-sm  resize-none min-h-40 max-h-80"
+              className="mt-1 block w-full border border-transparent rounded-md shadow-sm resize-none min-h-40 max-h-80 bg-gray-200"
             />
           </div>
           <label className="block mb-4">
@@ -108,6 +112,15 @@ export default function TicketResponse({ params }: { params: { id: string } }) {
               disabled={isLoading}
             >
               {isLoading ? "Submitting..." : "Submit Response"}
+            </button>
+            <button
+              type="button"
+              onClick={handleReturnClick}
+              className={`mt-4 px-8 py-4 bg-yellow-500 text-white rounded-md shadow-md hover:bg-yellow-600 focus:outline-none focus:bg-yellow-600 w-full ${
+                isLoading ? "opacity-50 cursor-not-allowed" : ""
+              }`}
+            >
+              Return to Admin Panel
             </button>
           </div>
         </div>

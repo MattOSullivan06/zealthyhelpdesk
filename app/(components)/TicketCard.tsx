@@ -20,7 +20,9 @@ const TicketCard: React.FC<TicketCardProps> = (props: TicketCardProps) => {
       <td className="border border-black px-4 py-2">
         {props.ticket.firstName} {props.ticket.lastName}
       </td>
-      <td className="border border-black px-4 py-2">{props.ticket.email}</td>
+      <td className="border border-black px-4 py-2 break-all">
+        {props.ticket.email}
+      </td>
       <td className="border border-black px-4 py-2 break-all">
         {truncateText(props.ticket.title, 20)}
       </td>
