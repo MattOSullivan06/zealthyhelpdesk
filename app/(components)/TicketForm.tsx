@@ -71,15 +71,15 @@ const TicketForm: React.FC = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-white">
+    <div className="flex justify-center items-center min-h-screen bg-white p-0">
       <form
         onSubmit={handleSubmit}
-        className="w-full md:w-2/3 max-w-xl bg-gray-200 p-6 rounded-lg shadow-md my-8"
+        className="w-full max-w-xl bg-gray-200 p-6 rounded-lg shadow-md"
       >
         <h1 className="text-3xl font-bold mb-6 text-center">
           HELP DESK SUBMISSION FORM
         </h1>
-        <div className="bg-gray-200 p-4 rounded-lg mb-4">
+        <div className="p-4 rounded-lg mb-4">
           <label className="block mb-4 text-lg">
             <span className="text-gray-700">First Name</span>
             <span className="text-red-500">*</span>
