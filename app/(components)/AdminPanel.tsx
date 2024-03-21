@@ -19,7 +19,9 @@ const AdminPanel: React.FC<{ tickets: Ticket[] }> = (props: {
               <th className="border border-black px-4 py-2">Email</th>
               <th className="border border-black px-4 py-2">Title</th>
               <th className="border border-black px-4 py-2">Status</th>
-              <th className="border border-black px-4 py-2">Description</th>
+              <th className="border border-black px-4 py-2 hidden md:table-cell">
+                Description
+              </th>
               <th className="border border-black px-4 py-2">View Ticket</th>
             </tr>
           </thead>

@@ -25,7 +25,7 @@ const TicketCard: React.FC<TicketCardProps> = (props: TicketCardProps) => {
         {truncateText(props.ticket.title, 20)}
       </td>
       <td className="border border-black px-4 py-2">{props.ticket.status}</td>
-      <td className="border border-black px-4 py-2 break-all">
+      <td className="border border-black px-4 py-2 hidden md:table-cell break-all">
         {truncateText(props.ticket.description, 150)}
       </td>
       <td className="border border-black px-4 py-2">
