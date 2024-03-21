@@ -59,7 +59,7 @@ export default function TicketResponse({ params }: { params: { id: string } }) {
     <div className="flex justify-center items-center min-h-screen bg-white-500">
       <form
         onSubmit={handleSubmit}
-        className="w-2/3 max-w-xl bg-gray-200 p-6 rounded-lg shadow-md mt-24 mb-24"
+        className="w-full md:w-2/3 lg:max-w-xl bg-gray-200 p-6 rounded-lg shadow-md my-0 mx-0 md:my-24 md:mx-auto"
       >
         <div className="bg-gray-200 p-4 rounded-lg mb-6">
           <div className="mb-4 break-all">
