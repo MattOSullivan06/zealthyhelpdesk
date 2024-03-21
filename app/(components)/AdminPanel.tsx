@@ -1,4 +1,3 @@
-// AdminPanel.tsx
 import React from "react";
 import TicketCard from "./TicketCard";
 import { Ticket } from "../Ticket/[id]/types";
