@@ -11,13 +11,20 @@ const NavigationBar: React.FC = () => {
           <FontAwesomeIcon icon={faHome} />
         </Link>
       </div>
-      <div className="text-white">
-        <Link href="/AdminPanel">
-          <button className="flex items-center bg-transparent border-none text-default-text cursor-pointer">
-            <FontAwesomeIcon icon={faUser} className="mr-2" />
-            Admin Panel
-          </button>
-        </Link>
+      <div className="text-white flex items-center">
+        <div className="hidden md:block">
+          <Link href="/AdminPanel">
+            <button className="flex items-center bg-transparent border-none text-default-text cursor-pointer">
+              <FontAwesomeIcon icon={faUser} className="mr-2" />
+              Admin Panel
+            </button>
+          </Link>
+        </div>
+        <div className="md:hidden">
+          <Link href="/AdminPanel">
+            <FontAwesomeIcon icon={faUser} className="text-xl cursor-pointer" />
+          </Link>
+        </div>
       </div>
     </nav>
   );
