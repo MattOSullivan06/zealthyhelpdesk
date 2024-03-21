@@ -57,8 +57,10 @@ export default function TicketResponse({ params }: { params: { id: string } }) {
         onSubmit={handleSubmit}
         className="w-2/3 max-w-xl bg-gray-200 p-6 rounded-lg shadow-md mt-24 mb-24"
       >
-        <h1 className="text-3xl font-bold mb-6 text-center">{title}</h1>
         <div className="bg-gray-200 p-4 rounded-lg mb-6">
+        <div className="mb-4">
+            <p className="text-lg text-gray-700">Title: {title}</p>
+          </div>
           <div className="mb-4">
             <p className="text-lg text-gray-700">First Name: {firstName}</p>
           </div>
