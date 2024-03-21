@@ -2,7 +2,6 @@
 import React, { useState, FormEvent } from "react";
 
 const TicketForm: React.FC = () => {
-
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const [firstName, setFirstName] = useState<string>("");
@@ -60,6 +59,17 @@ const TicketForm: React.FC = () => {
     setModalVisible(false);
   };
 
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    setter: React.Dispatch<React.SetStateAction<string>>,
+    maxLength: number
+  ) => {
+    const { value } = e.target;
+    if (value.length <= maxLength) {
+      setter(value);
+    }
+  };
+
   return (
     <div className="flex justify-center items-center min-h-screen bg-white">
       <form
@@ -76,8 +86,9 @@ const TicketForm: React.FC = () => {
             <input
               required
               type="text"
-              onChange={(e) => setFirstName(e.target.value)}
+              onChange={(e) => handleInputChange(e, setFirstName, 25)}
               value={firstName}
+              maxLength={25}
               className="mt-1 block w-full border border-black rounded-md shadow-sm"
             />
           </label>
@@ -88,8 +99,9 @@ const TicketForm: React.FC = () => {
             <input
               required
               type="text"
-              onChange={(e) => setLastName(e.target.value)}
+              onChange={(e) => handleInputChange(e, setLastName, 25)}
               value={lastName}
+              maxLength={25}
               className="mt-1 block w-full border border-black rounded-md shadow-sm"
             />
           </label>
@@ -100,8 +112,9 @@ const TicketForm: React.FC = () => {
             <input
               required
               type="email"
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => handleInputChange(e, setEmail, 254)}
               value={email}
+              maxLength={254}
               className="mt-1 block w-full border border-black rounded-md shadow-sm"
             />
           </label>
@@ -112,8 +125,9 @@ const TicketForm: React.FC = () => {
             <input
               required
               type="text"
-              onChange={(e) => setTitle(e.target.value)}
+              onChange={(e) => handleInputChange(e, setTitle, 50)}
               value={title}
+              maxLength={75}
               className="mt-1 block w-full border border-black rounded-md shadow-sm"
             />
           </label>
