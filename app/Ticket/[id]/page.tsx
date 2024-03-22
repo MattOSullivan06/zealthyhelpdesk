@@ -1,8 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { fetchTicketById, updateTicket } from "../../../utils/api";
 
-export default function TicketResponse({ params }: { params: { id: string } }) {
+const TicketResponse: React.FC<{ params: { id: string } }> = ({ params }) => {
   const router = useRouter();
 
   const [status, setStatus] = useState<string>("");
@@ -17,47 +18,52 @@ export default function TicketResponse({ params }: { params: { id: string } }) {
   const [modalMessage, setModalMessage] = useState<string>("");
 
   useEffect(() => {
-    async function fetchData() {
-      await fetch(`/api/ticket/${params.id}`)
-        .then(async (res) => {
-          return await res.json();
-        })
-        .then(async (json) => {
-          setStatus(json.ticket.status);
-          setTitle(json.ticket.title);
-          setDescription(json.ticket.description);
-          setFirstName(json.ticket.firstName);
-          setLastName(json.ticket.lastName);
-          setEmail(json.ticket.email);
-          if (json.ticket.response != null) {
-            setResponse(json.ticket.response);
-          }
-        });
-    }
+    const fetchData = async () => {
+      const ticketData = await fetchTicketById(params.id);
+      if (ticketData) {
+        setStatus(ticketData.ticket.status);
+        setTitle(ticketData.ticket.title);
+        setDescription(ticketData.ticket.description);
+        setFirstName(ticketData.ticket.firstName);
+        setLastName(ticketData.ticket.lastName);
+        setEmail(ticketData.ticket.email);
+        if (ticketData.ticket.response != null) {
+          setResponse(ticketData.ticket.response);
+        }
+      } else {
+        console.error("Error fetching ticket.");
+      }
+    };
     fetchData();
   }, [params.id]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
-    const res = await fetch(`/api/ticket/${params.id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ response, status }),
-    });
-    if (res.status === 200) {
-      setModalMessage("Ticket status and response submitted successfully.");
-      setModalVisible(true);
-      setTimeout(() => {
-        router.push("/AdminPanel");
-        router.refresh();
-      }, 1500);
-    } else {
-      setModalMessage("Submission failed. Please try again.");
-      setModalVisible(true);
-    }
-    setIsLoading(false);
-    console.log(`Would normally send email here with body: ${response}`);
+
+    updateTicket(params.id, { response, status })
+      .then((res) => {
+        if (res.status === 200) {
+          setModalMessage("Ticket status and response submitted successfully.");
+          setModalVisible(true);
+          setTimeout(() => {
+            router.push("/AdminPanel");
+            router.refresh();
+          }, 1500);
+        } else {
+          setModalMessage("Submission failed. Please try again.");
+          setModalVisible(true);
+        }
+      })
+      .catch((error) => {
+        console.error("Error updating ticket:", error);
+        setModalMessage("An error occurred. Please try again.");
+        setModalVisible(true);
+      })
+      .finally(() => {
+        setIsLoading(false);
+        console.log(`Would normally send email here with body: ${response}`);
+      });
   };
 
   const handleReturnClick = () => {
@@ -143,4 +149,6 @@ export default function TicketResponse({ params }: { params: { id: string } }) {
       )}
     </div>
   );
-}
+};
+
+export default TicketResponse;

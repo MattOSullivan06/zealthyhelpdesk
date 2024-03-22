@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, FormEvent } from "react";
+import { createTicket } from "../../utils/api";
 
 const TicketForm: React.FC = () => {
   const [title, setTitle] = useState<string>("");
@@ -25,22 +26,13 @@ const TicketForm: React.FC = () => {
     };
 
     try {
-      const res = await fetch(`/api/ticket`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newTicket),
-      });
+      const ticketData = await createTicket(newTicket);
 
-      if (res.status === 200) {
-        setModalMessage("Your Ticket Has Been Received!");
-        setModalVisible(true);
-        resetForm();
-      } else {
-        setModalMessage("Submission failed. Please try again.");
-        setModalVisible(true);
-      }
+      setModalMessage("Your Ticket Has Been Received!");
+      setModalVisible(true);
+      resetForm();
     } catch (error) {
-      setModalMessage("An error occurred. Please try again.");
+      setModalMessage("Submission failed. Please try again.");
       setModalVisible(true);
     } finally {
       setIsLoading(false);
