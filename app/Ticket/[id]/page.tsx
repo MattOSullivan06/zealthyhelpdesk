@@ -13,6 +13,8 @@ export default function TicketResponse({ params }: { params: { id: string } }) {
   const [lastName, setLastName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [modalVisible, setModalVisible] = useState<boolean>(false);
+  const [modalMessage, setModalMessage] = useState<string>("");
 
   useEffect(() => {
     async function fetchData() {
@@ -44,8 +46,15 @@ export default function TicketResponse({ params }: { params: { id: string } }) {
       body: JSON.stringify({ response, status }),
     });
     if (res.status === 200) {
-      router.push("/AdminPanel");
-      router.refresh();
+      setModalMessage("Ticket status and response submitted successfully.");
+      setModalVisible(true);
+      setTimeout(() => {
+        router.push("/AdminPanel");
+        router.refresh();
+      }, 1500);
+    } else {
+      setModalMessage("Submission failed. Please try again.");
+      setModalVisible(true);
     }
     setIsLoading(false);
     console.log(`Would normally send email here with body: ${response}`);
@@ -125,6 +134,13 @@ export default function TicketResponse({ params }: { params: { id: string } }) {
           </div>
         </div>
       </form>
+      {modalVisible && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          <div className="bg-white p-6 rounded-lg shadow-lg">
+            <p className="text-lg">{modalMessage}</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
