@@ -40,30 +40,29 @@ const TicketResponse: React.FC<{ params: { id: string } }> = ({ params }) => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
-
-    updateTicket(params.id, { response, status })
-      .then((res) => {
-        if (res.status === 200) {
-          setModalMessage("Ticket status and response submitted successfully.");
-          setModalVisible(true);
-          setTimeout(() => {
-            router.push("/AdminPanel");
-            router.refresh();
-          }, 1500);
-        } else {
-          setModalMessage("Submission failed. Please try again.");
-          setModalVisible(true);
-        }
-      })
-      .catch((error) => {
-        console.error("Error updating ticket:", error);
-        setModalMessage("An error occurred. Please try again.");
+  
+    try {
+      const res = await updateTicket(params.id, { response, status });
+  
+      if (res.status === 200) {
+        setModalMessage("Ticket status and response submitted successfully.");
         setModalVisible(true);
-      })
-      .finally(() => {
-        setIsLoading(false);
+        setTimeout(() => {
+          router.push("/AdminPanel");
+          router.refresh();
+        }, 1500);
         console.log(`Would normally send email here with body: ${response}`);
-      });
+      } else {
+        setModalMessage("Submission failed. Please try again.");
+        setModalVisible(true);
+      }
+    } catch (error) {
+      console.error("Error updating ticket:", error);
+      setModalMessage("An error occurred. Please try again.");
+      setModalVisible(true);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleReturnClick = () => {
